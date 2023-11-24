@@ -15,7 +15,7 @@ class JwtHelper {
     final claimSet = JwtClaim(
         issuer: 'cuidapet',
         subject: userId.toString(),
-        expiry: DateTime.now().add(Duration(days: expire)),
+        expiry: DateTime.now().add(Duration(seconds: 30)),
         notBefore: DateTime.now(),
         issuedAt: DateTime.now(),
         otherClaims: <String, dynamic>{'supplier': supplierId},
@@ -37,7 +37,8 @@ class JwtHelper {
       issuer: accessToken,
       subject: 'RefreshToken',
       expiry: DateTime.now().add(Duration(days: expiry)),
-      notBefore: DateTime.now().add(Duration(hours: notBefore)),
+      // notBefore: DateTime.now().add(Duration(hours: notBefore)),
+      notBefore: DateTime.now(),
       issuedAt: DateTime.now(),
       otherClaims: <String, dynamic>{},
     );
